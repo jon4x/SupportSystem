@@ -41,23 +41,25 @@ public class SupportCommand extends Command{
                         if (target != null) {
                             if (!SupportManager.getInstance().getSupportPlayer().containsValue(target)) {
                                 if (SupportManager.getInstance().getSupportQueue().contains(target)) {
+                                    SupportManager.getInstance().getSupportQueue().remove(target);
                                     target.sendMessage(new TextComponent(Main.getPrefix() + "§7Du §7wirst §7nun §7in §7einem §7privaten §7Chat §7betreut.\n§aDein §aSupporter §8\u00bb §e" + p.getName()));
                                     p.sendMessage(new TextComponent(Main.getPrefix() + "§7Du §7betreust §7nun §7einen §7Spieler §7in §7einem §7privaten §7Chat.\n§aDein §aSpieler §8\u00bb §e" + target.getName()));
                                 }
                                 else {
-                                    p.sendMessage(new TextComponent());
+                                    p.sendMessage(new TextComponent(Main.getPrefix() + "§cDieser §cSpieler §cbefindest §csich §cnicht §cin §cder §cWarteschlange!"));
                                 }
                             }
                             else {
-                                p.sendMessage(new TextComponent());
+                                ProxiedPlayer supporter = (ProxiedPlayer) Methods.getKeyFromValue(SupportManager.getInstance().getSupportPlayer(), target);
+                                p.sendMessage(new TextComponent(Main.getPrefix() + "§cDieser §cSpieler §cwird §cbereits §cvon §e" + supporter + "§c betreut!"));
                             }
                         }
                         else {
-                            p.sendMessage(new TextComponent());
+                            p.sendMessage(new TextComponent(Main.getPrefix() + "§cDieser Spieler ist nicht online!"));
                         }
                     }
                     else {
-                        p.sendMessage(new TextComponent());
+                        p.sendMessage(new TextComponent(Main.getPrefix() + "§cDu befindest dich bereits in einem Support-Gespräch!"));
                     }
                 }
 
