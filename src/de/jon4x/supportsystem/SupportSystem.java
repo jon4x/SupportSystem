@@ -37,6 +37,6 @@ public class SupportSystem extends Plugin {
 
     // Getter
     public static String getPrefix() {
-        return "§8[§aSupport§8] ";
+        return "§2•§a● Support §8\u00bb ";
     }
 }

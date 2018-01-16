@@ -90,7 +90,7 @@ public class SupportCommand extends Command{
                         p.sendMessage(new TextComponent(SupportSystem.getPrefix() + "§cSie §cbefinden §csich §cbereits §cin der Warteschlange!\n§7Bitte §7habe §7einen §7moment §7Geduld."));
                     }
                 }
-                if (args[0].equalsIgnoreCase("leave")) {
+                else if (args[0].equalsIgnoreCase("leave")) {
                     if (SupportManager.getInstance().getSupportQueue().contains(p)) {
                         p.sendMessage(new TextComponent(SupportSystem.getPrefix() + "§cSie haben die Warteschlange verlassen!"));
                         SupportManager.getInstance().getSupportQueue().remove(p);
@@ -100,6 +100,9 @@ public class SupportCommand extends Command{
                     }
                 }
             }
+        }
+        else {
+            sender.sendMessage(new TextComponent(SupportSystem.getPrefix() + "§7Du §7musst §7ein §cSpieler §7sein §7um §7diesen §7Command §7zu §7verwenden!"));
         }
     }
 }
