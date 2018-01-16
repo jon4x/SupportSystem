@@ -1,9 +1,10 @@
 package de.jon4x.supportsystem.main;
 
 import de.jon4x.supportsystem.commands.SupportCommand;
-import de.jon4x.supportsystem.listener.ChatEvent;
-import de.jon4x.supportsystem.listener.DisconnectEvent;
-import de.jon4x.supportsystem.support.SupportManager;
+import de.jon4x.supportsystem.listener.ChatListener;
+import de.jon4x.supportsystem.listener.DisconnectListener;
+import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.api.plugin.PluginManager;
 
@@ -12,7 +13,7 @@ public class Main extends Plugin {
     // On Enable
     @Override
     public void onEnable() {
-        getProxy().getConsole().sendMessage(getPrefix() + "§aDas Support-System wurde aktiviert!");
+        getProxy().getConsole().sendMessage(new TextComponent(getPrefix() + "§7Das Support-System wurde §aaktiviert§7!"));
         PluginManager pm = getProxy().getPluginManager();
         registerCommands(pm);
         registerEvents(pm);
@@ -21,13 +22,13 @@ public class Main extends Plugin {
     // On Disable
     @Override
     public void onDisable() {
-        getProxy().getConsole().sendMessage(getPrefix() + "§cDas Support-System wurde deaktiviert!");
+        getProxy().getConsole().sendMessage(new TextComponent(getPrefix() + "§7Das Support-System wurde §cdeaktiviert§7!"));
     }
 
     // Register Events
     private void registerEvents(PluginManager pm) {
-        pm.registerListener(this, new ChatEvent());
-        pm.registerListener(this, new DisconnectEvent());
+        pm.registerListener(this, new ChatListener());
+        pm.registerListener(this, new DisconnectListener());
     }
 
     // Register Commands
